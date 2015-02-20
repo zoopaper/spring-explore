@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author kris
  *
  */
-public class Spring {
+public class ConfigFileBeanFactory {
 	public static void main(String[] args) {
 		
 		ApplicationContext factory=new ClassPathXmlApplicationContext("classpath:applicationContext.xml"); 
