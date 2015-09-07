@@ -1,19 +1,26 @@
 package org.spring.explore.controller;
 
-import org.spring.explore.entity.User;
-import org.spring.explore.service.UserService;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+
+@Controller
+@Scope("prototype")
 public class UserController {
 
-	private UserService userService;
+    private static int staticNum = 0;
+    private int noStaticNum = 0;
 
-	public void addUser(User user) {
-		userService.addUser(user);
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView userView() {
 
-	}
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("userView");
 
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-
+        System.out.println(staticNum++ + " | " + noStaticNum++);
+        return modelAndView;
+    }
 }
